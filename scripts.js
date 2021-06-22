@@ -1,9 +1,9 @@
-const app = documnet.getElementById('root')
+const app = document.getElementById('root')
 
 const logo = document.createElement('img')
 logo.src = 'logo.png'
 
-const container = document.createELement('div')
+const container = document.createElement('div')
 container.setAttribute('class', 'container')
 
 app.appendChild(logo)
@@ -18,10 +18,25 @@ request.onload = function() {
 
   if (request.status >= 200 && request.status <= 400) {
     data.forEach((m) => {
-      console.log(m.title)
+      const card = document.createElement('div')
+      card.setAttribute('class', 'card')
+
+      const h1 = document.createElement('h1')
+      h1.textContent = m.title
+
+      const p = document.createElement('p')
+      m.description = m.description.substring(0, 300)
+      p.textContent = `${m.description}...`
+
+      card.appendChild(h1)
+      card.appendChild(p)
+
+      container.appendChild(card)
     })
   } else {
-    console.log('error')
+    const error = document.createElement('marquee')
+    error.textContent = "doesn't work"
+    app.appendChild(error)
   }
 }
 
