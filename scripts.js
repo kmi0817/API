@@ -22,6 +22,7 @@ app.appendChild(input)
 function get_description(title) {
   data = JSON.parse(request.response)
 
+  var flag = false
   data.forEach((m) => {
     if (m.title === title) {
       const card = document.createElement('div')
@@ -35,8 +36,11 @@ function get_description(title) {
 
       container.appendChild(h1)
       container.appendChild(card)
+      flag = true
     }
   })
+
+  if (!flag) alert("No Search Results")
 }
 
 const btn = document.createElement('input')
