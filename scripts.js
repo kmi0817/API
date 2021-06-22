@@ -27,14 +27,17 @@ function get_description(title) {
     if (m.title === title) {
       const card = document.createElement('div')
       card.setAttribute('class', 'card')
+
+      const p = document.createElement('p')
       var description = m.description.substring(0, 300)
       description = `${description}...`
-      card.textContent = description
+      p.textContent = description
 
       const h1 = document.createElement('h1')
       h1.textContent = m.title
 
-      container.appendChild(h1)
+      card.appendChild(h1)
+      card.appendChild(p)
       container.appendChild(card)
       flag = true
     }
